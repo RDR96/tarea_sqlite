@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center"
+    tools:context="com.rdr.rodrigocorvera.personas.InicioSesion">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Inicio de sesión"
+        android:textSize="20sp"
+        android:gravity="center"
+        android:layout_marginBottom="100dp"
+
+        />
+    <EditText
+        android:id="@+id/campo_usuario"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/insert_user_carnet"
+        android:textSize="20sp"
+        android:textAlignment="center"
+        android:layout_marginBottom="20dp"
+
+        />
+    <EditText
+        android:id="@+id/campo_contraseña"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/insert_user_password"
+        android:textSize="20sp"
+        android:textAlignment="center"
+        android:inputType="textPassword"
+        android:layout_marginBottom="20dp"
+        />
+    
+    <Button
+        android:id="@+id/boton_iniciar_sesion"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/sign_in"
+        />
+
+
+</LinearLayout>
