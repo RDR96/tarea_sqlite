@@ -1,4 +1,4 @@
-package com.rdr.rodrigocorvera.personas.Acitivies;
+package com.rdr.rodrigocorvera.personas.Activities;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -35,6 +35,7 @@ public class RegistroAlumno extends AppCompatActivity {
                     if (verifyStudent(campoCarnet.getText().toString(), campoNombre.getText().toString() , campoContrasena.getText().toString())) {
                         Intent intent = new Intent(getApplicationContext(), InicioSesion.class);
                         startActivity(intent);
+                        finish();
                     }
 
                 }else {

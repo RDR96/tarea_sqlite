@@ -1,4 +1,4 @@
-package com.rdr.rodrigocorvera.personas.Acitivies;
+package com.rdr.rodrigocorvera.personas.Activities;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;

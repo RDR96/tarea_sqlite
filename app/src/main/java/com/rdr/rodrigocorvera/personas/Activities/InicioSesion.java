@@ -1,4 +1,4 @@
-package com.rdr.rodrigocorvera.personas.Acitivies;
+package com.rdr.rodrigocorvera.personas.Activities;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -55,6 +55,7 @@ public class InicioSesion extends AppCompatActivity {
         if ( dblite.checkNumberOfRows() == 0) {
             Intent intent = new Intent(getApplicationContext(), RegistroAlumno.class);
             startActivity(intent);
+            finish();
         }
 
 
@@ -68,6 +69,7 @@ public class InicioSesion extends AppCompatActivity {
             intent.setType("text/plain");
             intent.putExtra(getIntent().EXTRA_TEXT, carnet + "/" + password + "/" + dblite.getNameFromCarnet(carnet));
             startActivity(intent);
+            finish();
         } else {
             Toast.makeText(getApplicationContext(), R.string.data_wrong, Toast.LENGTH_SHORT).show();
         }

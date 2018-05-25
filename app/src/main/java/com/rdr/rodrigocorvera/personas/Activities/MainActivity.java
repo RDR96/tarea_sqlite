@@ -1,4 +1,4 @@
-package com.rdr.rodrigocorvera.personas.Acitivies;
+package com.rdr.rodrigocorvera.personas.Activities;
 
 import android.content.Intent;
 import android.os.Bundle;
