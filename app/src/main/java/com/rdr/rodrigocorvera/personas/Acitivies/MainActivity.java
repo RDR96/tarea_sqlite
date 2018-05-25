@@ -1,25 +1,22 @@
-package com.rdr.rodrigocorvera.personas;
+package com.rdr.rodrigocorvera.personas.Acitivies;
 
-import android.app.ActionBar;
-import android.content.ClipData;
-import android.content.ContentValues;
 import android.content.Intent;
-import android.provider.ContactsContract;
+import android.os.Bundle;
 import android.support.design.widget.NavigationView;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.FrameLayout;
-import android.support.v7.widget.Toolbar;
 import android.widget.TextView;
 
 import com.rdr.rodrigocorvera.personas.Fragments.GradesFragment;
 import com.rdr.rodrigocorvera.personas.Fragments.ProfileFragment;
+import com.rdr.rodrigocorvera.personas.R;
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener{
 

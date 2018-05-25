@@ -1,10 +1,8 @@
 package com.rdr.rodrigocorvera.personas.Fragments;
 
 import android.content.Context;
-import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -60,7 +58,7 @@ public class ProfileFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        elementView = inflater.inflate(R.layout.fragment_profile, container, false);
+        elementView = inflater.inflate(R.layout.activity_fragment_profile, container, false);
         nameBox = elementView.findViewById(R.id.name_box);
         nameBox.setText(mParam2);
         return elementView;
