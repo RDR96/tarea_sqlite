@@ -1,7 +1,6 @@
 <resources>
     <string name="app_name">Personas</string>
     <string name="profile">Perfil</string>
-    <string name="category">Categoria</string>
     <string name="change_user">Cambiar usuario</string>
     <string name="users">Usuarios</string>
     <string name="grades">Notas</string>
@@ -16,6 +15,10 @@
     <string name="data_wrong">Ingrese datos correcto</string>
     <string name="register">Registrarse</string>
     <string name="successful_insert">Ingresado correctamente</string>
+    <string name="add_note">Añade una nota</string>
+    <string name="category">Categoria</string>
+    <string name="new_category">Nueva categoria</string>
+    <string name="add_the_note">Agregar nota</string>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
