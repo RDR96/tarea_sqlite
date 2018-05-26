@@ -95,7 +95,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         switch (item.getItemId()) {
             case R.id.action_add:
-                Log.d("Entro en add","");
+                Intent intent = new Intent(getApplicationContext(), AddNoteActivity.class);
+                startActivity(intent);
                 break;
 
             case R.id.action_exit:

@@ -15,11 +15,13 @@ public class constants {
 
     public static final String ID_CATEGORY = "id";
     public static final String NAME_CATEGORY = "name";
+    //public static final String NAME_CATEGORY = "name";
 
-    public static final String ID_GRADE = "id";
-    public static final String GRADE_VALUE = "nota";
     public static final String NOTA_STUDENT_ID = "alumno_id";
     public static final String NOTA_CATEGORY_ID = "categoria_id";
+    public static final String ID_NOTE = "id";
+    public static final String NOTE_VALUE = "nota";
+
 
 
     // Propiedades base de datos

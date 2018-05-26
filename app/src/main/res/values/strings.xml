@@ -19,6 +19,7 @@
     <string name="category">Categoria</string>
     <string name="new_category">Nueva categoria</string>
     <string name="add_the_note">Agregar nota</string>
+    <string name="back">Regresar</string>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
