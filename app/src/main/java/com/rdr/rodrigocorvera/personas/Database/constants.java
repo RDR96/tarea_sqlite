@@ -12,9 +12,11 @@ public class constants {
     public static final String ID_STUDENT = "id";
     public static final String NAME_STUDENT = "name";
     public static final String PASSWORD_STUDENT = "password";
+    public static final String ISLOG_STUDENT = "isLog";
 
     public static final String ID_CATEGORY = "id";
     public static final String NAME_CATEGORY = "name";
+    public static final String CATEGORY_ID_STUDENT = "alumno_id";
     //public static final String NAME_CATEGORY = "name";
 
     public static final String NOTA_STUDENT_ID = "alumno_id";
@@ -36,14 +38,14 @@ public class constants {
 
     // Creacion de tablas
 
-    public static final String CREATE_TABLE_ALUMNO = "CREATE TABLE Alumno(id INTEGER PRIMARY KEY,"
-            + " name TEXT NOT NULL, password TEXT NOT NULL);";
+    public static final String CREATE_TABLE_ALUMNO = "CREATE TABLE Alumno(id VARCHAR(8) PRIMARY KEY,"
+            + " name TEXT NOT NULL, password TEXT NOT NULL, isLog BIT NULL);";
 
     public static final String CREATE_TABLE_CATEGORIA = "CREATE TABLE Categoria(id INTEGER PRIMARY KEY AUTOINCREMENT,"
-            + " name TEXT NOT NULL);";
+            + " name TEXT NOT NULL, alumno_id VARCHAR(8), FOREIGN KEY (alumno_id) REFERENCES Alumno (id));";
 
     public static final String CREATE_TABLE_NOTA = "CREATE TABLE Nota(id INTEGER PRIMARY KEY AUTOINCREMENT,"
-            + " nota number NOT NULL, alumno_id INTEGER NOT NULL, categoria_id INTEGER NOT NULL, FOREIGN KEY (alumno_id) REFERENCES Alumno (id),"
+            + " nota VARCHAR(255) NOT NULL, alumno_id VARCHHAR(8) NOT NULL, categoria_id INTEGER NOT NULL, FOREIGN KEY (alumno_id) REFERENCES Alumno (id),"
             + " FOREIGN KEY(categoria_id) REFERENCES Categoria(id));";
 
 

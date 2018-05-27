@@ -11,7 +11,7 @@ import android.widget.Toast;
 import com.rdr.rodrigocorvera.personas.Database.DbHelper;
 import com.rdr.rodrigocorvera.personas.R;
 
-public class InicioSesion extends AppCompatActivity {
+public class InicioSesionActivity extends AppCompatActivity {
 
 
     EditText campoUsuario;
@@ -24,7 +24,7 @@ public class InicioSesion extends AppCompatActivity {
         setContentView(R.layout.activity_inicio_sesion);
 
         checkForUsers();
-
+        checkLogIn();
         findElements();
 
         botonIniciarSesion.setOnClickListener(new View.OnClickListener() {
@@ -53,7 +53,7 @@ public class InicioSesion extends AppCompatActivity {
         dblite = DbHelper.getIntanceState(getApplicationContext());
 
         if ( dblite.checkNumberOfRows() == 0) {
-            Intent intent = new Intent(getApplicationContext(), RegistroAlumno.class);
+            Intent intent = new Intent(getApplicationContext(), RegistroAlumnoActivity.class);
             startActivity(intent);
             finish();
         }
@@ -64,6 +64,7 @@ public class InicioSesion extends AppCompatActivity {
     public void verifyStudent (String carnet, String password) {
 
         if ( dblite.checkSingUp(carnet, password) == 1 ) {
+            dblite.setActualUser(carnet);
             Intent intent  = new Intent(getApplicationContext(), MainActivity.class);
             intent.setAction(Intent.ACTION_SEND);
             intent.setType("text/plain");
@@ -73,7 +74,14 @@ public class InicioSesion extends AppCompatActivity {
         } else {
             Toast.makeText(getApplicationContext(), R.string.data_wrong, Toast.LENGTH_SHORT).show();
         }
+    }
 
+    public void checkLogIn () {
+        if ( !dblite.checkUserLog().equals("") ) {
+            Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+            startActivity(intent);
+            finish();
+        }
     }
 
 

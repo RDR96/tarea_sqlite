@@ -14,9 +14,12 @@ import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.TextView;
 
+import com.rdr.rodrigocorvera.personas.Database.DbHelper;
 import com.rdr.rodrigocorvera.personas.Fragments.GradesFragment;
 import com.rdr.rodrigocorvera.personas.Fragments.ProfileFragment;
 import com.rdr.rodrigocorvera.personas.R;
+
+import java.sql.SQLException;
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener{
 
@@ -29,6 +32,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     TextView nameSection;
     NavigationView navigationView;
     String values[];
+    DbHelper db;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -100,7 +104,11 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 break;
 
             case R.id.action_exit:
-                Log.d("Entro en exit","");
+                db = DbHelper.getIntanceState(getApplicationContext());
+                db.closeSession();
+                Intent backToLogin = new Intent(getApplicationContext(), InicioSesionActivity.class);
+                startActivity(backToLogin);
+                finish();
                 break;
         }
 
@@ -132,6 +140,5 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         String values[] = intent.getStringExtra(intent.EXTRA_TEXT).split("/");
         return values;
-
     }
 }

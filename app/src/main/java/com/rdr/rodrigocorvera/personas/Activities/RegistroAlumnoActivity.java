@@ -11,7 +11,7 @@ import android.widget.Toast;
 import com.rdr.rodrigocorvera.personas.Database.DbHelper;
 import com.rdr.rodrigocorvera.personas.R;
 
-public class RegistroAlumno extends AppCompatActivity {
+public class RegistroAlumnoActivity extends AppCompatActivity {
 
     EditText campoCarnet;
     EditText campoContrasena;
@@ -33,7 +33,7 @@ public class RegistroAlumno extends AppCompatActivity {
                 if ( !campoCarnet.getText().toString().equals("") && !campoNombre.getText().toString().equals("") && !campoContrasena.getText().toString().equals("") ) {
 
                     if (verifyStudent(campoCarnet.getText().toString(), campoNombre.getText().toString() , campoContrasena.getText().toString())) {
-                        Intent intent = new Intent(getApplicationContext(), InicioSesion.class);
+                        Intent intent = new Intent(getApplicationContext(), InicioSesionActivity.class);
                         startActivity(intent);
                         finish();
                     }

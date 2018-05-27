@@ -5,8 +5,10 @@
     <string name="users">Usuarios</string>
     <string name="grades">Notas</string>
     <string name="add_student">Añadir estudiante</string>
+    <string name="add_successful">Se añadio exitosamente</string>
     <string name="open">Abrir</string>
     <string name="close">Cerrar</string>
+    <string name="add">Añadir</string>
     <string name="insert_user_carnet">Ingrese carnet</string>
     <string name="insert_user_password">Ingrese contraseña</string>
     <string name="insert_user_name">Ingrese usuario</string>
@@ -18,8 +20,11 @@
     <string name="add_note">Añade una nota</string>
     <string name="category">Categoria</string>
     <string name="new_category">Nueva categoria</string>
+    <string name="insert_category">Inserte categoria</string>
+    <string name="category_already_exist">Ya existe categoria</string>
     <string name="add_the_note">Agregar nota</string>
     <string name="back">Regresar</string>
+    <string name="no_categories">Cree nueva categoria</string>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
