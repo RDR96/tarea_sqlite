@@ -2,7 +2,9 @@
     <string name="app_name">Personas</string>
     <string name="profile">Perfil</string>
     <string name="change_user">Cambiar usuario</string>
+    <string name="register_user">Registrar otro usuario</string>
     <string name="users">Usuarios</string>
+    <string name="user">Usuario</string>
     <string name="grades">Notas</string>
     <string name="add_student">Añadir estudiante</string>
     <string name="add_successful">Se añadio exitosamente</string>
@@ -18,7 +20,13 @@
     <string name="register">Registrarse</string>
     <string name="successful_insert">Ingresado correctamente</string>
     <string name="add_note">Añade una nota</string>
+
+    <string name="notes">Notas</string>
+    <string name="note">Nota</string>
+
     <string name="category">Categoria</string>
+    <string name="categories">Categorias</string>
+
     <string name="new_category">Nueva categoria</string>
     <string name="insert_category">Inserte categoria</string>
     <string name="category_already_exist">Ya existe categoria</string>

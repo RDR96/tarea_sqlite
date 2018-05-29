@@ -10,7 +10,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.Light.NoActionBar">
         <activity
-            android:name="com.rdr.rodrigocorvera.personas.Activities.InicioSesionActivity"
+            android:name=".Activities.InicioSesionActivity"
             android:label="@string/app_name">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -18,9 +18,10 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Activities.RegistroAlumnoActivity"></activity>
-        <activity android:name=".Activities.MainActivity"/>
-        <activity android:name=".Activities.AddNoteActivity"/>
+        <activity android:name=".Activities.RegistroAlumnoActivity" />
+        <activity android:name=".Activities.MainActivity" />
+        <activity android:name=".Activities.AddNoteActivity" />
+        <activity android:name=".Activities.CategoryFilterActivity"></activity>
     </application>
 
 </manifest>

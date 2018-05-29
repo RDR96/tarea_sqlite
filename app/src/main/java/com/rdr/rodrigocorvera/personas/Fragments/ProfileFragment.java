@@ -60,7 +60,7 @@ public class ProfileFragment extends Fragment {
         // Inflate the layout for this fragment
         elementView = inflater.inflate(R.layout.activity_fragment_profile, container, false);
         nameBox = elementView.findViewById(R.id.name_box);
-        nameBox.setText(mParam2);
+        nameBox.setText(mParam1);
         return elementView;
     }
 

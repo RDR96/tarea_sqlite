@@ -15,6 +15,7 @@ import android.widget.FrameLayout;
 import android.widget.TextView;
 
 import com.rdr.rodrigocorvera.personas.Database.DbHelper;
+import com.rdr.rodrigocorvera.personas.Fragments.CategoriesFragment;
 import com.rdr.rodrigocorvera.personas.Fragments.GradesFragment;
 import com.rdr.rodrigocorvera.personas.Fragments.ProfileFragment;
 import com.rdr.rodrigocorvera.personas.R;
@@ -46,6 +47,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     }
 
     public void getViews() {
+        db = DbHelper.getIntanceState(getApplicationContext());
         navigationView = findViewById(R.id.navigation_view);
         frameLayout = findViewById(R.id.frame_section);
         drawerLayout = findViewById(R.id.drawer_layout);
@@ -67,17 +69,20 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         switch (id) {
             case R.id.profile_item:
-                ProfileFragment profileFragment = ProfileFragment.newInstance(values[0],values[2]);
+                ProfileFragment profileFragment = ProfileFragment.newInstance(db.getNameFromCarnet(db.checkUserLog()), "");
                 frameLayout.removeAllViews();
                 getSupportFragmentManager().beginTransaction().add(R.id.frame_section, profileFragment).commit();
                 break;
             case R.id.grades:
-                GradesFragment gradesFragment = GradesFragment.newInstance(values[0],values[2]);
+                GradesFragment gradesFragment = GradesFragment.newInstance("","");
                 frameLayout.removeAllViews();
                 getSupportFragmentManager().beginTransaction().add(R.id.frame_section, gradesFragment).commit();
                 break;
 
-            case R.id.change_user:
+            case R.id.categories:
+                CategoriesFragment categoriesFragment = CategoriesFragment.newInstance("","");
+                frameLayout.removeAllViews();
+                getSupportFragmentManager().beginTransaction().add(R.id.frame_section, categoriesFragment).commit();
 
                 break;
         }
@@ -104,7 +109,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 break;
 
             case R.id.action_exit:
-                db = DbHelper.getIntanceState(getApplicationContext());
                 db.closeSession();
                 Intent backToLogin = new Intent(getApplicationContext(), InicioSesionActivity.class);
                 startActivity(backToLogin);

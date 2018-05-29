@@ -45,5 +45,16 @@
         android:text="@string/sign_in"
         />
 
+    <TextView
+        android:id="@+id/texto_registrarse"
+        android:layout_marginTop="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/register"
+        android:textSize="20dp"
+        android:textColor="@color/black"
+        android:gravity="center_horizontal"
+        />
+
 
 </LinearLayout>

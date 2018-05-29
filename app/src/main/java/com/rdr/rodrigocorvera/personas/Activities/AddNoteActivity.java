@@ -2,11 +2,13 @@ package com.rdr.rodrigocorvera.personas.Activities;
 
 import android.app.AlertDialog;
 import android.app.LoaderManager;
+import android.content.Intent;
 import android.database.Cursor;
 import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.View;
 import android.widget.ArrayAdapter;
@@ -32,6 +34,7 @@ public class AddNoteActivity extends AppCompatActivity {
     Toolbar toolbar;
     DbHelper db;
     boolean isSpinnerValuesSet;
+    AlertDialog alert;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,9 +60,9 @@ public class AddNoteActivity extends AppCompatActivity {
                     if ( isSpinnerValuesSet ) {
                         db.addNote(categoriesSpinner.getSelectedItem().toString(), textBoxNote.getText().toString());
                         Toast.makeText(getApplicationContext(), R.string.add_successful, Toast.LENGTH_SHORT).show();
-                    } else {
-                        db.addNote(newCategoryNameTextBox.getText().toString(), textBoxNote.getText().toString());
+                        textBoxNote.setText("");
                     }
+
                 }
 
             }
@@ -71,10 +74,10 @@ public class AddNoteActivity extends AppCompatActivity {
                 AlertDialog.Builder mBuilder = new AlertDialog.Builder(AddNoteActivity.this);
                 View dialogElements = getLayoutInflater().inflate(R.layout.dialog_new_category, null);
                 final EditText newCategoryName  = dialogElements.findViewById(R.id.new_category_textbox);
-                LinearLayout addCategory = dialogElements.findViewById(R.id.add_category_button);
+                LinearLayout addCategory = dialogElements.findViewById(R.id.new_category_button);
 
                 mBuilder.setView(dialogElements);
-                final AlertDialog alert = mBuilder.create();
+                alert = mBuilder.create();
                 alert.show();
 
                 addCategory.setOnClickListener(new View.OnClickListener() {
@@ -84,6 +87,8 @@ public class AddNoteActivity extends AppCompatActivity {
                             db.addCategory(newCategoryName.getText().toString());
                             Toast.makeText(AddNoteActivity.this, R.string.add_successful, Toast.LENGTH_SHORT).show();
                             fillSpinnerData();
+                            categoriesSpinner.setEnabled(true);
+                            isSpinnerValuesSet = true;
                             alert.hide();
                         }else {
                             Toast.makeText(AddNoteActivity.this, R.string.category_already_exist, Toast.LENGTH_SHORT).show();
@@ -96,6 +101,17 @@ public class AddNoteActivity extends AppCompatActivity {
 
     }
 
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        if (alert != null) {
+            alert.dismiss();
+        }
+        Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+        startActivity(intent);
+        finish();
+    }
 
 
     @Override

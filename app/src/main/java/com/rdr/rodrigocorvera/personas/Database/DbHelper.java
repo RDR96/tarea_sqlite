@@ -9,7 +9,9 @@ import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 import android.widget.Toast;
 
+import com.rdr.rodrigocorvera.personas.Entidades.Category;
 import com.rdr.rodrigocorvera.personas.Entidades.Estudiante;
+import com.rdr.rodrigocorvera.personas.Entidades.Note;
 import com.rdr.rodrigocorvera.personas.R;
 
 import java.util.ArrayList;
@@ -27,7 +29,7 @@ public class DbHelper extends SQLiteOpenHelper {
     public DbHelper (Context context) {
 
         super(context,constants.DB_NAME,null,1);
-        //context.deleteDatabase(constants.DB_NAME);
+        context.deleteDatabase(constants.DB_NAME);
         this.context = context;
 
     }
@@ -126,6 +128,7 @@ public class DbHelper extends SQLiteOpenHelper {
     public String getNameFromCarnet (String carnet) {
         String name = "";
         try{
+            db = getReadableDatabase();
             Cursor cursor = db.rawQuery("SELECT name FROM Alumno WHERE id=?", new String[]{carnet});
             cursor.moveToNext();
             name = cursor.getString(0);
@@ -224,18 +227,12 @@ public class DbHelper extends SQLiteOpenHelper {
 
     public void addNote (String categoryName, String noteContent) {
         try{
+
             ContentValues values = new ContentValues();
             values.put(constants.CATEGORY_ID_STUDENT, checkUserLog());
-            values.put(constants.NAME_CATEGORY, categoryName.toLowerCase());
-            db.insert(constants.TB_NAME_CATEGORIA, null, values);
-            values.remove(constants.NAME_STUDENT);
             values.put(constants.NOTE_VALUE, noteContent);
             values.put(constants.NOTA_CATEGORY_ID, getIdFromCategory(categoryName.toLowerCase()));
             db.insert(constants.TB_NAME_NOTA, null, values);
-            values.put(constants.NOTE_VALUE, noteContent);
-            values.put(constants.NOTA_CATEGORY_ID, getIdFromCategory(categoryName.toLowerCase()));
-            db.insert(constants.TB_NAME_NOTA, null, values);
-
 
 
 
@@ -260,7 +257,7 @@ public class DbHelper extends SQLiteOpenHelper {
     public String getIdFromCategory (String categoryName) {
         String categoryId = "";
         try {
-            Cursor cursor = db.rawQuery("SELECT * FROM Categoria WHERE name=? AND id_alumno=?", new String[]{categoryName, checkUserLog()});
+            Cursor cursor = db.rawQuery("SELECT * FROM Categoria WHERE name=? AND alumno_id=?", new String[]{categoryName, checkUserLog()});
             cursor.moveToNext();
             categoryId = cursor.getString(cursor.getColumnIndex(constants.ID_STUDENT));
             cursor.close();
@@ -282,6 +279,67 @@ public class DbHelper extends SQLiteOpenHelper {
 
         }
     }
+
+    public ArrayList<Note> retrieveNotes () {
+        ArrayList<Note> arrayNotes = new ArrayList<Note>();
+
+        try{
+            db = getReadableDatabase();
+            Cursor cursor = db.rawQuery("SELECT cat.name, note.nota FROM Categoria AS cat INNER JOIN Nota AS note" +
+                    " ON cat.id = note.categoria_id WHERE note.alumno_id=?", new String[]{checkUserLog()});
+
+            while (cursor.moveToNext()) {
+                arrayNotes.add(new Note(cursor.getString(0),cursor.getString(1)));
+            }
+
+        }catch (SQLException sqlException) {
+
+        }
+
+        return arrayNotes;
+    }
+
+
+    //MODIFICAR!!!
+
+    public ArrayList<Category> retrieveCategoriesInfo () {
+        ArrayList<Category> arrayCategories = new ArrayList<Category>();
+
+        try{
+            db = getReadableDatabase();
+            Cursor cursor = db.rawQuery("SELECT * FROM Categoria WHERE alumno_id=?", new String[]{checkUserLog()});
+
+            while (cursor.moveToNext()) {
+                arrayCategories.add(new Category(cursor.getString(cursor.getColumnIndex("name")), cursor.getString(cursor.getColumnIndex("id"))));
+            }
+
+        }catch (SQLException sqlException) {
+
+        }
+
+        return arrayCategories;
+    }
+
+    public ArrayList<Note> getNotesByCategory(String categoryId) {
+        ArrayList<Note> arrayCategories = new ArrayList<Note>();
+
+        try{
+            db = getReadableDatabase();
+            Cursor cursor = db.rawQuery("SELECT * FROM Nota WHERE alumno_id=? AND categoria_id=?", new String[]{checkUserLog(), categoryId});
+
+            while (cursor.moveToNext()) {
+                arrayCategories.add(new Note(cursor.getString(cursor.getColumnIndex("id")), cursor.getString(cursor.getColumnIndex("nota"))));
+            }
+
+        }catch (SQLException sqlException) {
+
+        }
+
+        return arrayCategories;
+
+    }
+
+
 
 
 }

@@ -6,6 +6,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.rdr.rodrigocorvera.personas.Database.DbHelper;
@@ -17,6 +18,7 @@ public class InicioSesionActivity extends AppCompatActivity {
     EditText campoUsuario;
     EditText campoContrasena;
     Button botonIniciarSesion;
+    TextView textoRegistrarse;
     public static DbHelper dblite;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,6 +48,14 @@ public class InicioSesionActivity extends AppCompatActivity {
         campoUsuario = findViewById(R.id.campo_usuario);
         campoContrasena = findViewById(R.id.campo_contraseña);
         botonIniciarSesion = findViewById(R.id.boton_iniciar_sesion);
+        textoRegistrarse = findViewById(R.id.texto_registrarse);
+        textoRegistrarse.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), RegistroAlumnoActivity.class);
+                startActivity(intent);
+            }
+        });
     }
 
     public void checkForUsers () {
