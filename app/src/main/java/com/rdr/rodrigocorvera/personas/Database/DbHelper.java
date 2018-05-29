@@ -29,7 +29,8 @@ public class DbHelper extends SQLiteOpenHelper {
     public DbHelper (Context context) {
 
         super(context,constants.DB_NAME,null,1);
-        context.deleteDatabase(constants.DB_NAME);
+        //Con esta instruccion es posible eliminar la base de datos y que se cree nuevamente
+        //context.deleteDatabase(constants.DB_NAME);
         this.context = context;
 
     }
