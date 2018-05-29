@@ -85,6 +85,12 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 getSupportFragmentManager().beginTransaction().add(R.id.frame_section, categoriesFragment).commit();
 
                 break;
+            case R.id.change_user:
+                db.closeSession();
+                Intent backToLogin = new Intent(getApplicationContext(), InicioSesionActivity.class);
+                startActivity(backToLogin);
+                finish();
+                break;
         }
 
         drawerLayout.closeDrawers();

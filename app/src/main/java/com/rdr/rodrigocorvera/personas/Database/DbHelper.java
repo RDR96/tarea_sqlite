@@ -339,8 +339,4 @@ public class DbHelper extends SQLiteOpenHelper {
         return arrayCategories;
 
     }
-
-
-
-
 }
